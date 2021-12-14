@@ -1,0 +1,9 @@
+SDCnet Network Package
+===========================
+This Package can auto-extract dispersion from FTAN diagram.
+
+###########Running
+python 1-train_syn.py  // Loading data and training
+python 2-prediction_syn_SDCnet.py   // Loading data and extracting  dispersion curves from synthetic data.
+python 2-prediction_obs_SDCnet.py   // Loading data and extracting  dispersion curves from observed  data.
+python plot_loss/3-plot_loss_obs_Unet_and_SDCnet.py   // Poltting the loss of SDCnet and Unet.

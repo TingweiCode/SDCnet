@@ -2,6 +2,19 @@ SDCnet Network Package
 ===========================
 This Package can auto-extract dispersion from FTAN diagram.
 
+All codes
+1-train_syn.py, running the code for the main program
+2-prediction_ak135_SDCnet.py, synthetic test for AK135 dispersion curves
+2-prediction_syn_SDCnet.py, synthetic test for 3D synthetic data extract dispersion curves
+2-prediction_obs_SDCnet.py, Implementation of extract dispersion curves for observed data.
+2-prediction_obs_Unet.py, Implementation SDCnet of extract dispersion curves for observed data
+3-plot_loss_obs_Unet_and_SDCnet.py, Plot SDCnet and Unet loss
+
+All code can be run on computer server with four Nvidia GEFORCE RTX 2080Ti in Ubuntu 18.04.4 environment.
+Contact information: Tingwei Yang, Email:s19010004@s.upc.edu.cn, Address: No. 19, Beitucheng Western Road, Chaoyang District, 100029, Beijing, P.R.China, Telephone: 82998104. If you have some problem about code, please contact me for priority email, many thanks.
+
+===========================
+
 ###########Running
 python 1-train_syn.py  // Loading data and training
 python 2-prediction_syn_SDCnet.py   // Loading data and extracting  dispersion curves from synthetic data.

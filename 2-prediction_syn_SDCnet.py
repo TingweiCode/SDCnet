@@ -10,6 +10,8 @@ from tqdm import *
 import torch
 from sklearn import preprocessing
 import matplotlib as mpl
+from scipy import interpolate
+
 #os.environ["CUDA_VISIBLE_DEVICES"] = "1,2,3"
 
 font1 = {'family' : 'serif',
@@ -20,6 +22,10 @@ font2 = {'family' : 'serif',
 'weight' : 'normal',
 'size'   : 20,
 }
+
+os.system('rm -r  test_syn_photo_SDCnet')
+os.system('mkdir -p test_syn_photo_SDCnet')
+
 ## load data
 datas = np.load('test_data/amp_syn.npy').reshape((-1,1,512,512))
 labels = np.load('test_data/group_syn.npy')
@@ -40,6 +46,7 @@ with torch.no_grad():
         output = outputs[i].cpu().numpy().reshape((512,512))
         data = datas[i].cpu().numpy().reshape((512,512))
         label = labels[i].reshape((512,512))
+
 
         ## plot prediction
         fig = plt.figure(1,figsize=(10,7))
@@ -80,5 +87,3 @@ with torch.no_grad():
         plt.xlabel('Period(s)',font2)
         plt.ylabel('Group Velocity(km/s)',font2)
         plt.savefig('./test_syn_photo_SDCnet/data_%d.png' %i,dpi = 600)
-
-

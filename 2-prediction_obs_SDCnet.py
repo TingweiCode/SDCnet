@@ -10,6 +10,7 @@ from tqdm import *
 import torch
 from sklearn import preprocessing
 import matplotlib as mpl
+from scipy import interpolate
 
 font1 = {'family' : 'serif',
 'weight' : 'normal',
@@ -19,6 +20,11 @@ font2 = {'family' : 'serif',
 'weight' : 'normal',
 'size'   : 20,
 }
+
+
+os.system('rm -r  test_obs_photo_SDCnet')
+os.system('mkdir -p test_obs_photo_SDCnet')
+
 
 ## load data
 datas = np.load('test_data/amp.npy').reshape((-1,1,512,512))
@@ -54,7 +60,7 @@ with torch.no_grad():
         plt.yticks(yticks, yticklabes,size=20)
         plt.xlabel('Period(s)',font2)
         plt.ylabel('Group Velocity(km/s)',font2)
-        plt.savefig('./test_photo/predicted_%d.png' %i,dpi = 600)
+        plt.savefig('./test_obs_photo_SDCnet/predicted_%d.png' %i,dpi = 600)
 
         fig = plt.figure(2,figsize=(10,7))
         plt.imshow(label,origin='lower',cmap = 'gray')
@@ -67,7 +73,7 @@ with torch.no_grad():
         plt.yticks(yticks, yticklabes,size=20)
         plt.xlabel('Period(s)',font2)
         plt.ylabel('Group Velocity(km/s)',font2)
-        plt.savefig('./test_photo/label_%d.png' %i,dpi = 600)
+        plt.savefig('./test_obs_photo_SDCnet/label_%d.png' %i,dpi = 600)
 
         fig = plt.figure(3,figsize=(10,7))
         plt.imshow(data,origin='lower',vmin=0, vmax=1,cmap=plt.cm.jet)
@@ -80,6 +86,10 @@ with torch.no_grad():
         plt.yticks(yticks, yticklabes,size=20)
         plt.xlabel('Period(s)',font2)
         plt.ylabel('Group Velocity(km/s)',font2)
-        plt.savefig('./test_photo/data_%d.png' %i,dpi = 600)
+        plt.savefig('./test_obs_photo_SDCnet/data_%d.png' %i,dpi = 600)
+
+
+
+  
 
 
